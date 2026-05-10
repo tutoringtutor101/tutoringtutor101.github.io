@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutoring Tutor — Academic Excellence</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --forest: #1a3a5c;
+    --forest-mid: #2a5482;
+    --forest-light: #4a86b8;
+    --cream: #f0f5fa;
+    --cream-dark: #e3edf5;
+    --gold: #2a7abf;
+    --gold-light: #5aabea;
+    --text-dark: #121820;
+    --text-mid: #2e3d50;
+    --text-muted: #6a7f96;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 4rem;
+    background: rgba(247, 243, 235, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(26, 58, 92, 0.12);
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--forest);
+    letter-spacing: 0.01em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--text-mid);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--forest); }
+
+  .nav-cta {
+    background: var(--forest);
+    color: var(--cream) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--forest-mid) !important; color: var(--cream) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 7rem 4rem 4rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -80px; top: -80px;
+    width: 550px; height: 550px;
+    background: radial-gradient(circle, rgba(42, 122, 191, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+    line-height: 1.1;
+    color: var(--forest);
+    margin-bottom: 1.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-body {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+    max-width: 420px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--forest);
+    color: var(--cream);
+    padding: 0.85rem 2.2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary:hover { background: var(--forest-mid); transform: translateY(-1px); }
+
+  .btn-secondary {
+    color: var(--forest);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-bottom: 1px solid var(--forest-light);
+    padding-bottom: 1px;
+    transition: gap 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .btn-secondary:hover { gap: 0.7rem; }
+
+  .hero-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-card-stack {
+    position: relative;
+    width: 340px;
+    height: 420px;
+  }
+
+  .credential-card {
+    position: absolute;
+    background: var(--white);
+    border: 1px solid rgba(26, 58, 42, 0.1);
+    border-radius: 4px;
+    padding: 1.75rem;
+    box-shadow: 0 12px 40px rgba(26, 58, 42, 0.1);
+  }
+
+  .credential-card.main {
+    bottom: 0; left: 0;
+    width: 300px;
+    background: var(--forest);
+    color: var(--cream);
+  }
+
+  .credential-card.float-1 {
+    top: 0; right: 0;
+    width: 240px;
+    animation: float1 4s ease-in-out infinite;
+  }
+
+  .credential-card.float-2 {
+    top: 50%; left: 10px;
+    width: 220px;
+    transform: translateY(-50%);
+    animation: float2 5s ease-in-out infinite;
+    animation-delay: 1.2s;
+  }
+
+  @keyframes float1 {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes float2 {
+    0%, 100% { transform: translateY(-50%); }
+    50% { transform: translateY(calc(-50% - 6px)); }
+  }
+
+  .card-tag {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--forest);
+    margin-bottom: 0.3rem;
+  }
+
+  .card-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .credential-card.main .card-title {
+    color: var(--cream);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .credential-card.main .card-tag { color: var(--gold-light); }
+  .credential-card.main .card-sub { color: rgba(247, 243, 235, 0.65); }
+
+  .degree-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(42, 122, 191, 0.2);
+    color: var(--gold-light);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    margin-top: 1rem;
+    letter-spacing: 0.03em;
+  }
+
+  .degree-badge::before {
+    content: '✦';
+    font-size: 0.6rem;
+  }
+
+  /* STATS STRIP */
+  .stats-strip {
+    background: var(--forest);
+    padding: 2.5rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: rgba(240, 245, 250, 0.55);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ABOUT */
+  .about {
+    padding: 7rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 6rem;
+    align-items: center;
+    background: var(--cream-dark);
+  }
+
+  .section-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 22px; height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    color: var(--forest);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .about-body {
+    font-size: 1rem;
+    color: var(--text-mid);
+    line-height: 1.85;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  .about-highlight {
+    border-left: 2px solid var(--gold);
+    padding-left: 1.25rem;
+    margin: 2rem 0;
+  }
+
+  .about-highlight p {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--forest);
+    line-height: 1.6;
+  }
+
+  .credential-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .credential-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    font-weight: 300;
+  }
+
+  .credential-list li::before {
+    content: '✦';
+    color: var(--gold);
+    font-size: 0.55rem;
+    flex-shrink: 0;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-img-frame {
+    background: var(--forest);
+    border-radius: 2px;
+    aspect-ratio: 4/5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-img-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 30px,
+        rgba(200, 146, 42, 0.05) 30px,
+        rgba(200, 146, 42, 0.05) 31px
+      );
+  }
+
+  .about-initials {
+    font-family: 'DM Serif Display', serif;
+    font-size: 7rem;
+    color: rgba(247, 243, 235, 0.12);
+    letter-spacing: -0.05em;
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-name-badge {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    background: var(--gold);
+    color: var(--white);
+    padding: 1.25rem 1.5rem;
+    border-radius: 2px;
+  }
+
+  .about-name-badge .name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    line-height: 1.2;
+    margin-bottom: 0.2rem;
+  }
+
+  .about-name-badge .degree {
+    font-size: 0.72rem;
+    font-weight: 400;
+    opacity: 0.82;
+    letter-spacing: 0.04em;
+  }
+
+  /* SUBJECTS */
+  .subjects {
+    padding: 7rem 4rem;
+    background: var(--cream);
+  }
+
+  .subjects-header {
+    text-align: center;
+    max-width: 540px;
+    margin: 0 auto 4rem;
+  }
+
+  .subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .subject-card {
+    background: var(--white);
+    border: 1px solid rgba(26, 58, 92, 0.1);
+    border-radius: 4px;
+    padding: 2rem 1.75rem;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .subject-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .subject-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(26, 58, 92, 0.1);
+    border-color: rgba(26, 58, 92, 0.2);
+  }
+
+  .subject-card:hover::after { transform: scaleX(1); }
+
+  .subject-level {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .subject-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--forest);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .subject-desc {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .subject-icon {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .subject-card.featured {
+    background: var(--forest);
+    border-color: var(--forest);
+  }
+
+  .subject-card.featured .subject-level { color: var(--gold-light); }
+  .subject-card.featured .subject-name { color: var(--cream); }
+  .subject-card.featured .subject-desc { color: rgba(247, 243, 235, 0.6); }
+  .subject-card.featured::after { background: var(--gold-light); }
+
+  /* APPROACH */
+  .approach {
+    padding: 7rem 4rem;
+    background: var(--forest);
+  }
+
+  .approach-header {
+    max-width: 480px;
+    margin-bottom: 4rem;
+  }
+
+  .approach-header .section-eyebrow { color: var(--gold-light); }
+  .approach-header .section-eyebrow::before { background: var(--gold-light); }
+  .approach-header .section-title { color: var(--cream); }
+
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .approach-item {
+    border-top: 1px solid rgba(240, 245, 250, 0.15);
+    padding-top: 2rem;
+  }
+
+  .approach-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3rem;
+    color: rgba(90, 171, 234, 0.4);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .approach-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--cream);
+    margin-bottom: 0.75rem;
+  }
+
+  .approach-text {
+    font-size: 0.875rem;
+    color: rgba(240, 245, 250, 0.58);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* CONTACT */
+  .contact {
+    padding: 7rem 4rem;
+    background: var(--cream-dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-info .section-title { margin-bottom: 1.25rem; }
+
+  .contact-body {
+    font-size: 1rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    margin-bottom: 0.85rem;
+    font-weight: 300;
+  }
+
+  .contact-detail-icon {
+    width: 32px; height: 32px;
+    background: var(--forest);
+    color: var(--cream);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .contact-form {
+    background: var(--white);
+    border: 1px solid rgba(26, 58, 42, 0.1);
+    border-radius: 4px;
+    padding: 2.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(26, 58, 92, 0.15);
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    background: var(--cream);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+
+  .form-input:focus {
+    border-color: var(--forest-light);
+    box-shadow: 0 0 0 3px rgba(74, 134, 184, 0.12);
+  }
+
+  .form-input::placeholder { color: var(--text-muted); }
+
+  .form-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(26, 58, 92, 0.15);
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    background: var(--cream);
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236a7f96' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+  }
+
+  .form-select:focus {
+    border-color: var(--forest-light);
+    box-shadow: 0 0 0 3px rgba(74, 134, 184, 0.12);
+  }
+
+  textarea.form-input { resize: vertical; min-height: 110px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--forest);
+    color: var(--cream);
+    padding: 0.9rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 0.5rem;
+  }
+
+  .form-submit:hover { background: var(--forest-mid); transform: translateY(-1px); }
+  .form-submit:active { transform: scale(0.99); }
+
+  /* FOOTER */
+  footer {
+    background: var(--text-dark);
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    letter-spacing: 0.01em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.82rem;
+    color: rgba(247, 243, 235, 0.45);
+    text-decoration: none;
+    transition: color 0.2s;
+    letter-spacing: 0.04em;
+  }
+
+  .footer-links a:hover { color: rgba(247, 243, 235, 0.85); }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: rgba(247, 243, 235, 0.3);
+    letter-spacing: 0.03em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow { animation: fadeUp 0.6s ease both; animation-delay: 0.1s; }
+  .hero h1 { animation: fadeUp 0.6s ease both; animation-delay: 0.22s; }
+  .hero-body { animation: fadeUp 0.6s ease both; animation-delay: 0.34s; }
+  .hero-actions { animation: fadeUp 0.6s ease both; animation-delay: 0.46s; }
+  .hero-visual { animation: fadeUp 0.6s ease both; animation-delay: 0.3s; }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 3rem; }
+    .hero-card-stack { width: 280px; height: 340px; }
+    .hero-visual { justify-content: center; }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); padding: 2rem 1.5rem; }
+    .about, .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    .about-name-badge { right: 0; bottom: -1rem; }
+    .subjects { padding: 4rem 1.5rem; }
+    .subjects-grid { grid-template-columns: 1fr; }
+    .approach { padding: 4rem 1.5rem; }
+    .approach-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Tutoring Tutor</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#subjects">Subjects</a></li>
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Session</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Academic Tutoring Services</p>
+    <h1>Unlock your <em>full potential</em> in every subject</h1>
+    <p class="hero-body">
+      Personalized, one-on-one tutoring from a mathematics graduate of UBC — helping students excel in AP sciences, standardized tests, and beyond.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book a Free Consultation</a>
+      <a href="#subjects" class="btn-secondary">View Subjects →</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card-stack">
+      <div class="credential-card float-1">
+        <p class="card-tag">Specialization</p>
+        <p class="card-title">AP Sciences</p>
+        <p class="card-sub">Biology · Psychology<br>Physics C</p>
+      </div>
+      <div class="credential-card float-2">
+        <p class="card-tag">Test Prep</p>
+        <p class="card-title">SAT & SSAT</p>
+        <p class="card-sub">Grades 6–12 covered</p>
+      </div>
+      <div class="credential-card main">
+        <p class="card-tag">Credential</p>
+        <p class="card-title">Tutoring Tutor</p>
+        <p class="card-sub">Dedicated to student success and building genuine understanding</p>
+        <span class="degree-badge">BSc Mathematics · UBC</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <p class="stat-number">7+</p>
+    <p class="stat-label">Subjects Taught</p>
+  </div>
+  <div class="stat-item">
+    <p class="stat-number">K–12</p>
+    <p class="stat-label">Grade Levels</p>
+  </div>
+  <div class="stat-item">
+    <p class="stat-number">1:1</p>
+    <p class="stat-label">Personalized Sessions</p>
+  </div>
+  <div class="stat-item">
+    <p class="stat-number">UBC</p>
+    <p class="stat-label">BSc Mathematics</p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-text">
+    <p class="section-eyebrow">About Me</p>
+    <h2 class="section-title">A tutor who truly <em>gets it</em></h2>
+    <p class="about-body">
+      I'm a mathematics graduate from the University of British Columbia with a genuine passion for making complex concepts click. Whether you're struggling with AP Physics or preparing for the SAT, I bring patience, clarity, and proven strategies to every session.
+    </p>
+    <div class="about-highlight">
+      <p>"Every student learns differently — my job is to find the approach that works for you."</p>
+    </div>
+    <ul class="credential-list">
+      <li>BSc in Mathematics, University of British Columbia</li>
+      <li>Experienced in AP-level science and standardized test preparation</li>
+      <li>Tailored study plans built around your specific goals</li>
+      <li>Comfortable working with students from middle school through high school</li>
+      <li>Flexible scheduling, in-person and virtual sessions available</li>
+    </ul>
+  </div>
+  <div class="about-visual">
+    <div class="about-img-frame">
+      <span class="about-initials">TT</span>
+    </div>
+    <div class="about-name-badge">
+      <p class="name">Tutoring Tutor</p>
+      <p class="degree">BSc Mathematics · UBC</p>
+    </div>
+  </div>
+</section>
+
+<!-- SUBJECTS -->
+<section class="subjects" id="subjects">
+  <div class="subjects-header">
+    <p class="section-eyebrow">What I Teach</p>
+    <h2 class="section-title">Subjects & <em>specializations</em></h2>
+  </div>
+  <div class="subjects-grid">
+
+    <div class="subject-card">
+      <span class="subject-icon">🔬</span>
+      <p class="subject-level">AP Course</p>
+      <h3 class="subject-name">AP Biology</h3>
+      <p class="subject-desc">From cellular processes to ecology — build a deep, exam-ready understanding of life sciences that goes beyond memorization.</p>
+    </div>
+
+    <div class="subject-card">
+      <span class="subject-icon">🧠</span>
+      <p class="subject-level">AP Course</p>
+      <h3 class="subject-name">AP Psychology</h3>
+      <p class="subject-desc">Understand key psychological theories, research methods, and human behavior. Master the concepts for a top score on the AP exam.</p>
+    </div>
+
+    <div class="subject-card featured">
+      <span class="subject-icon">⚡</span>
+      <p class="subject-level">AP Course</p>
+      <h3 class="subject-name">AP Physics C</h3>
+      <p class="subject-desc">Calculus-based mechanics and electromagnetism, made approachable. Strong mathematical foundations meet real-world physics intuition.</p>
+    </div>
+
+    <div class="subject-card">
+      <span class="subject-icon">📝</span>
+      <p class="subject-level">Standardized Test</p>
+      <h3 class="subject-name">SAT Prep</h3>
+      <p class="subject-desc">Targeted strategies for math and reading comprehension. Maximize your score with focused practice, timed drills, and confidence building.</p>
+    </div>
+
+    <div class="subject-card">
+      <span class="subject-icon">🎓</span>
+      <p class="subject-level">Middle School · Standardized Test</p>
+      <h3 class="subject-name">SSAT Prep</h3>
+      <p class="subject-desc">Specialized preparation for middle schoolers aiming for independent school admissions. Verbal, quantitative, and reading skills — all covered.</p>
+    </div>
+
+    <div class="subject-card">
+      <span class="subject-icon">💻</span>
+      <p class="subject-level">AP Course</p>
+      <h3 class="subject-name">AP Computer Science</h3>
+      <p class="subject-desc">Object-oriented programming, algorithms, and data structures — demystified. Build real problem-solving skills alongside exam readiness.</p>
+    </div>
+
+    <div class="subject-card">
+      <span class="subject-icon">📊</span>
+      <p class="subject-level">AP Course</p>
+      <h3 class="subject-name">AP Statistics</h3>
+      <p class="subject-desc">From probability to inference — build a solid grasp of statistical thinking and data analysis to ace the AP exam and beyond.</p>
+    </div>
+
+    <div class="subject-card" style="background: var(--cream-dark); border-style: dashed;">
+      <span class="subject-icon">💬</span>
+      <p class="subject-level">Not Sure?</p>
+      <h3 class="subject-name">Let's Talk</h3>
+      <p class="subject-desc">Not sure if your subject is covered? Reach out — I'm happy to discuss your specific needs and see how I can help.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach" id="approach">
+  <div class="approach-header">
+    <p class="section-eyebrow">My Method</p>
+    <h2 class="section-title">How every session <em>works</em></h2>
+  </div>
+  <div class="approach-grid">
+    <div class="approach-item">
+      <p class="approach-num">01</p>
+      <h3 class="approach-title">Diagnose & Understand</h3>
+      <p class="approach-text">Every student starts from a different place. I spend time understanding your current knowledge, learning style, and specific goals before diving in.</p>
+    </div>
+    <div class="approach-item">
+      <p class="approach-num">02</p>
+      <h3 class="approach-title">Build a Clear Plan</h3>
+      <p class="approach-text">Together we map out a roadmap — structured sessions with measurable milestones, paced to your timeline and adapted as you progress.</p>
+    </div>
+    <div class="approach-item">
+      <p class="approach-num">03</p>
+      <h3 class="approach-title">Practice & Refine</h3>
+      <p class="approach-text">Real problems, real feedback. I focus on transferable understanding rather than rote patterns, so you can tackle anything the exam throws at you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <p class="section-eyebrow">Get in Touch</p>
+    <h2 class="section-title">Ready to get <em>started?</em></h2>
+    <p class="contact-body">
+      The first consultation is free. Fill in the form and I'll get back to you within 24 hours to schedule a time that works for you.
+    </p>
+    <div class="contact-detail">
+      <div class="contact-detail-icon">✉</div>
+      <span>tutoringtutor101@gmail.com</span>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-detail-icon">📍</div>
+      <span>In-person (Barrie, Ontario region) & virtual sessions available</span>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-detail-icon">🕐</div>
+      <span>Flexible scheduling — evenings & weekends welcome</span>
+    </div>
+  </div>
+
+  <div class="contact-form">
+    <div data-fs-error style="display:none; color:#a32d2d; font-size:0.875rem; margin-bottom:1rem;"></div>
+    <form id="contact-form">
+      <div class="form-group">
+        <label class="form-label" for="name">Your Name</label>
+        <input type="text" id="name" name="name" class="form-input" placeholder="First and last name" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="email">Email Address</label>
+        <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="subject">Subject of Interest</label>
+        <select id="subject" name="subject" class="form-select">
+          <option value="">Select a subject…</option>
+          <option>AP Biology</option>
+          <option>AP Psychology</option>
+          <option>AP Physics C</option>
+          <option>AP Computer Science</option>
+          <option>AP Statistics</option>
+          <option>SAT Preparation</option>
+          <option>SSAT Preparation</option>
+          <option>Other / Not Sure</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="message">Message</label>
+        <textarea id="message" name="message" class="form-input" placeholder="Tell me a bit about where you are and what you're hoping to achieve…" required></textarea>
+      </div>
+      <button type="submit" class="form-submit" id="submit-btn">Send Message</button>
+    </form>
+  </div>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('submit-btn');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      try {
+        var res = await fetch('https://formspree.io/f/mgodzrlv', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value
+          })
+        });
+        if (res.ok) {
+          btn.textContent = 'Message Sent ✓';
+          btn.style.background = 'var(--forest-mid)';
+        } else {
+          btn.textContent = 'Send Message';
+          btn.disabled = false;
+          alert('Something went wrong. Please email tutoringtutor101@gmail.com directly.');
+        }
+      } catch(err) {
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+        alert('Something went wrong. Please email tutoringtutor101@gmail.com directly.');
+      }
+    });
+  </script>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">Tutoring Tutor</p>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#subjects">Subjects</a></li>
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Tutoring Tutor. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
