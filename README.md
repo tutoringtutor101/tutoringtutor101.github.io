@@ -4,8 +4,6 @@ Personal tutoring website for **Tutoring Tutor**. Built with plain HTML and CSS,
 
 🌐 **Live site:** `https://tutoringtutor101.github.io`
 
----
-
 ## Subjects
 
 - AP Biology
@@ -16,15 +14,11 @@ Personal tutoring website for **Tutoring Tutor**. Built with plain HTML and CSS,
 - SAT Preparation
 - SSAT Preparation (middle school)
 
----
-
 ## Tech Stack
 
 - **HTML/CSS** — single `index.html` file, no frameworks or build tools
 - **GitHub Pages** — free static site hosting
 - **Formspree** — contact form submissions forwarded to email
-
----
 
 ## Making Changes
 
@@ -37,8 +31,6 @@ All content is in `index.html`. Common edits:
 
 After any change, save the file and upload it to GitHub — the site updates automatically within a minute or two.
 
----
-
 ## Deployment
 
 This site is hosted on **GitHub Pages**.
@@ -47,8 +39,6 @@ This site is hosted on **GitHub Pages**.
 2. Go to **Settings → Pages** and confirm the source is set to the `main` branch
 3. Your site will be live at `https://yourusername.github.io`
 
----
-
 ## Contact Form
 
-The contact form uses [Formspree](https://formspree.io) (form ID: `mgodzrlv`) to forward submissions to `tutoringtutor101@gmail.com`. No server required. The free Formspree plan allows up to 50 submissions per month.
+The contact form uses [Formspree](https://formspree.io) to forward submissions to `tutoringtutor101@gmail.com`. No server required. The free Formspree plan allows up to 50 submissions per month.
