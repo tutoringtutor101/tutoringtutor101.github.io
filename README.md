@@ -1,8 +1,8 @@
 # Tutoring Tutor — Personal Tutoring Website
 
-Personal tutoring website for **Tutoring Tutor**, a mathematics graduate from the University of British Columbia. Built with plain HTML and CSS, hosted on GitHub Pages, with contact form submissions handled by Formspree.
+Personal tutoring website for **Tutoring Tutor**. Built with plain HTML and CSS, hosted on GitHub Pages, with contact form submissions handled by Formspree.
 
-🌐 **Live site:** `https://yourusername.github.io`
+🌐 **Live site:** `https://tutoringtutor101.github.io`
 
 ---
 
